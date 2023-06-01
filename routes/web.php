@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\TodoController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +19,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/activities', 'ActivityController@index')->name('activities.index');
-Route::get('/activities/create', 'ActivityController@create')->name('activities.create');
-Route::post('/activities', 'ActivityController@store')->name('activities.store');
+
+Route::middleware('auth')->group(function () {
+    Route::resource('todos', TodoController::class);
+});
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
