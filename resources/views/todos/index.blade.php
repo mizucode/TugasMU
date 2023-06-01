@@ -15,7 +15,10 @@
     <ul>
         @foreach ($todos as $todo)
             <li>
-                {{ $todo->title }}
+                <strong>{{ $todo->title }}</strong><br>
+                <em>Description:</em> {{ $todo->description }}<br>
+                <em>Start Date:</em> {{ $todo->start_date }}<br>
+                <em>Due Date:</em> {{ $todo->due_date }}<br>
                 <a href="{{ route('todos.edit', $todo->id) }}">Edit</a>
                 <form action="{{ route('todos.destroy', $todo->id) }}" method="POST">
                     @csrf

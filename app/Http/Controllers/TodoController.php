@@ -28,10 +28,13 @@ class TodoController extends Controller
 
         $todo = new Todo();
         $todo->title = $request->title;
+        $todo->description = $request->description;
+        $todo->start_date = $request->start_date;
+        $todo->due_date = $request->due_date;
         $todo->user_id = Auth::id();
         $todo->save();
 
-        return redirect()->route('todos.index')->with('Beres', 'Beres Coek');
+        return redirect()->route('todos.index')->with('success', 'To Do created successfully.');
     }
 
     public function edit(Todo $todo)
@@ -46,6 +49,9 @@ class TodoController extends Controller
         ]);
 
         $todo->title = $request->title;
+        $todo->description = $request->description;
+        $todo->start_date = $request->start_date;
+        $todo->due_date = $request->due_date;
         $todo->save();
 
         return redirect()->route('todos.index')->with('success', 'To Do updated successfully.');

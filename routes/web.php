@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\Auth\LoginController;
+// use App\Http\Controllers\ActivityController;
+// use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\TodoController;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -30,4 +31,6 @@ Route::middleware('auth')->group(function () {
 });
 
 
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::redirect('/home', '/todos')->name('home');
