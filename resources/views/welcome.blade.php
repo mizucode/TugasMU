@@ -26,7 +26,7 @@
 			crossorigin="anonymous"
 		/>
 		<!-- Fav Icon -->
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		<link rel="icon" type="image/x-icon" href="{{ asset('storage/img/ikuyo.ico') }}" />
 		<!-- Title -->
 		<title>PTIK B</title>
 	</head>
@@ -121,9 +121,9 @@
                                     @if (Route::has('login'))
                 
                     @auth
-                        <a href="{{ url('/home') }}" class="py-2 mx-8 font-bold px-4 text-center rounded text-white flex bg-dsr hover:shadow-lg hover:bg-sky-500 transition duration-300 ease-in-out">Home</a>
+                        <a href="{{ url('/home') }}" class="py-2 mx-8 justify-center font-bold px-4 text-center rounded text-white flex bg-dsr hover:shadow-lg hover:bg-sky-500 transition duration-300 ease-in-out">Home</a>
                     @else
-                        <a href="{{ route('login') }}" class="py-2 mx-8 font-bold px-4 text-center rounded text-white flex bg-dsr hover:shadow-lg hover:bg-sky-500 transition duration-300 ease-in-out">Log in</a>
+                        <a href="{{ route('login') }}" class="py-2 mx-8 justify-center font-bold px-4 text-center rounded text-white flex bg-dsr hover:shadow-lg hover:bg-sky-500 transition duration-300 ease-in-out">Log in</a>
 
                         
                     @endauth
@@ -153,21 +153,21 @@
 					class="flex flex-wrap-reverse lg:flex-nowrap lg:flex-row justify-center lg:px-24"
 				>
 					<div class="w-full self-center lg:px-4">
-						<h1 class="text-2xl font-semibold text-blue-500 whitespace-nowrap">
+						<h1 class="text-2xl font-semibold text-center lg:text-start text-blue-500 whitespace-nowrap">
 							Selamat Datang di Web
-							<span class="block font-bold text-niger text-4xl lg:text-6xl mb-2"
+							<span class="block font-bold text-niger text-4xl lg:text-6xl my-2"
 								>TugasMU</span
 							>
 						</h1>
 						<h2
-							class="font-medium text-slate-500 text-lg mb-8 lg:text-2xl lg:mt-4"
+							class="font-medium text-slate-500 text-center lg:text-start text-lg mb-6 lg:text-2xl lg:mt-4"
 						>
 							TugasMU, <span class="multiText"></span>
 						</h2>
 
 						<a
                         href="{{ route('register') }}"
-							class="text-base md:text-xl font-semibold text-white bg-dsr py-3 px-8 rounded-md hover:shadow-lg hover:bg-sky-500 transition duration-300 ease-in-out"
+							class="text-base md:text-xl lg:justify-start flex justify-center lg:w-60 w-40 lg:text-start text-center lg:mx-0 mx-auto whitespace-nowrap font-semibold text-white bg-dsr py-3 px-8 rounded-md hover:shadow-lg hover:bg-sky-500 transition duration-300 ease-in-out"
 							>Daftar Sekarang!</a
 						>
 					</div>
@@ -467,7 +467,7 @@
 							Butuh Bantuan?
 						</h1>
 						<a
-							href="#"
+							href="https://wa.link/ibokfp"
 							class="py-2 px-4 bg-gray-300 bg-opacity-80 rounded-md text-xs text-left"
 						>
 							<i class="fa-solid fa-message"></i>
@@ -479,7 +479,7 @@
 							About Us
 						</h1>
 						<a
-							href="#"
+							href="https://wa.link/ibokfp"
 							class="py-2 px-4 bg-gray-300 bg-opacity-80 rounded-md text-xs text-left"
 						>
 							<i class="fa-solid fa-message"></i>
@@ -538,7 +538,33 @@
 			</div>
 		</footer> -->
 
-		<script src="{{ asset('js/main.js') }}"></script>
+		<script loading="eager">
+			// Hamburger
+window.onscroll = function () {
+    const header = document.querySelector("header");
+    const fixedNav = header.offsetTop;
+    const toTop = document.querySelector("#to-top");
+
+    if (window.pageYOffset > fixedNav) {
+        header.classList.add("navbar-fixed");
+        toTop.classList.remove("hidden");
+        toTop.classList.add("flex");
+    } else {
+        header.classList.remove("navbar-fixed");
+        toTop.classList.remove("flex");
+        toTop.classList.add("hidden");
+    }
+};
+
+const hamburger = document.querySelector("#hamburger");
+const navMenu = document.querySelector("#nav-menu");
+
+hamburger.addEventListener("click", function () {
+    hamburger.classList.toggle("hamburger-active");
+    navMenu.classList.toggle("hidden");
+});
+
+		</script>
 		<script
 			type="module"
 			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
@@ -549,7 +575,7 @@
 		></script>
 
 		<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-		<script>
+		<script loading="eager">
 			var typingeffect = new Typed(".multiText", {
 				strings: [
 					"Nugas tanpa ragu!",

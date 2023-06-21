@@ -37,4 +37,11 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    protected function redirectTo()
+    {
+        if (auth()->user()->role === 'admin') {
+            return '/admin';
+        }
+        return '/home'; // atau ganti dengan rute yang sesuai jika ada halaman beranda pengguna biasa
+    }
 }

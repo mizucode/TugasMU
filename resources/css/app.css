@@ -63,15 +63,43 @@ body {
 
 @layer components {
     .floating-input {
-        @apply appearance-none px-3 py-1 text-xl  rounded-sm transition duration-200 bg-transparent w-full focus:outline-none border border-black/30 focus:border-dsr;
+        @apply bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-dsr;
     }
+
     .content {
         @apply px-[70px];
+    }
+    .agus {
+        @apply py-2 px-2 bg-red-500 rounded-md hover:bg-green-400;
     }
 }
 
 @layer components {
-    .title-form {
-        @apply bg-primary text-text lg:text-2xl text-center font-semibold py-4 rounded-t-md;
+    .dark-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        display: none;
+    }
+
+    .menu-container {
+        position: relative;
+    }
+
+    .menu {
+        position: absolute;
+
+        z-index: 10000;
+        transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+    }
+    .preview-container {
+        @apply w-full h-48  overflow-hidden rounded-md;
+    }
+    #previewImage {
+        @apply w-full h-full object-cover;
     }
 }

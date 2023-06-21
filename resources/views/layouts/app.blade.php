@@ -29,12 +29,17 @@
 			crossorigin="anonymous"
 		/>
 		<!-- Fav Icon -->
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		<link rel="icon" type="image/x-icon" href="{{ asset('storage/img/ikuyo.ico') }}" />
 		<!-- Title -->
 		<title>{{ config('app.name', 'Laravel') }}</title>
+		<script src="/js/main.js" loading="eager"></script>
+		<script src="/js/note.js" loading="eager"></script>
 	</head>
 <body>
 	@yield('content')
     
+
+
+	
 </body>
 </html>

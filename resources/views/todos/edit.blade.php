@@ -2,8 +2,99 @@
 <!-- create.blade.php -->
 
 @extends('layouts.app') @section('content')
+<body class="bg-BgNote">
+    <form action="{{ route('todos.update', $todo->id) }}" enctype="multipart/form-data" method="POST" class="pt-4  rounded-md">
+        @csrf
+        @method('PUT')
+   
+    <section>
+        <div class="container">
+            <div class="flex items-center justify-between text-2xl py-4">
+                <div>
+                    <a href="/todos">
+                        <i class="fa-solid fa-arrow-left text-2xl"></i>
+                    </a>
+                </div>
+                <div class="flex justify-center ml-12 gap-8">
+                    <button id="toggleMenu" type="button">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                </div>
+                
+            </div>
+            <div class="menu-container">
+                <div id="menu" class="bg-white w-60 rounded-md overflow-hidden hidden right-0 top-0 -mt-12 menu">
+                    
+                    
+                    <button type="submit" class="w-full text-start px-4 py-4 font-semibold hover:bg-gray-200">
+                        Perbaharui
+                    </button>
+                    
+                </div>
+            </div>
+            <div id="darkOverlay" class="dark-overlay"></div>
+        </div>
+    </section>
+    <section action="" class="bg-BgNote">
+        <div class="container">
+            <input value="{{ $todo->title }}" type="text" name="title" placeholder="Title" required class="w-full font-medium text-3xl px-2 py-2 -mt-2 focus:outline-none bg-BgNote" />
+            <div class="mb-2 flex items-center gap-4">
+                <input type="date" name="start_date" value="{{ $todo->star_date }}" name="" id="" class="h-6 text-sm lg:text-xl lg:py-4 py-2 text-center px-2 border-black border bg-white rounded-lg opacity-50" />
+                <label for="fileInput">
+                    <i class="fa-solid fa-image cursor-pointer text-2xl lg:text-3xl opacity-50"></i>
+                </label>
+            </div>
+            <div>
+                <div class="px-2 py-2 outline-none bg-BgNote -mt-2 text-xs">
+                    <input value="{{ asset('storage/images/' . $todo->image) }}" type="file" name="image" id="fileInput" class="text bg-BgNote outline-none opacity-50 hidden" />
+                </div>
+                <div>
+                    @if ($todo->image)
+                        <div id="previewContainer" class="preview-container">
+                            <img src="{{ asset('storage/images/' . $todo->image) }}" class="w-full h-full object-cover" alt="Gambar To-Do">
+                        </div>
+                    @endif
+                    <div id="previewContainer" class="preview-container">
+                        <img id="previewImage" src="" alt="" />
+                    </div>
+                </div>
+            </div>
 
-<body class="bg-slate-200">
+            <textarea name="description" name="text" id="textareaInput" cols="30" rows="10" placeholder="Mulai Mengetik" class="w-full text-xl px-2 py-2 focus:outline-none bg-BgNote -mt-48">{{ $todo->description }}</textarea>
+        </div>
+    </section>
+</form>
+
+<section class="fixed bottom-0 left-0 w-full py-8">
+    <div class="container">
+        <div class="flex justify-end gap-4 -mt-16">
+            <form action="{{ route('todos.destroy', $todo->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="w-full text-start px-4 py-4 font-semibold hover:bg-gray-200">
+                    Hapus
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- <body class="bg-slate-200">
+    
     <header class="bg-dark py-4">
         <div class="container lg:px-16">
             <main class="flex justify-between items-center">
@@ -27,7 +118,11 @@
         </div>
     </header>
 
-    <form  action="{{ route('todos.update', $todo->id) }}" method="POST" class="pt-4  rounded-md">
+    @if ($todo->image)
+    <img src="{{ asset('storage/images/' . $todo->image) }}" alt="Gambar To-Do">
+@endif
+
+    <form  action="{{ route('todos.update', $todo->id) }}"  enctype="multipart/form-data" method="POST" class="pt-4  rounded-md">
         @csrf
         @method('PUT')
         <div class="container lg:px-16">
@@ -53,6 +148,9 @@
                     </div>
                 </div>
             </section>
+            <div class="bg-text shadow-sm py-2 rounded-b-md">
+                
+            </div>
             <section class="w-full py-4 lg:py-0 mb-2 lg:mb-8">
                 <div class="container">
                     <div class="relative">
@@ -139,7 +237,7 @@
             </button>
         </div>
     </form>
-</body>
+</body> --}}
 
 
 

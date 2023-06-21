@@ -1,6 +1,12 @@
 @extends('layouts.app') @section('content')
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
 <section class="w-screen h-screen flex flex-col justify-center items-center flex-wrap" >
-	<section class="flex justify-center w-full items-center flex-wrap">
+				<section class="flex justify-center w-full items-center flex-wrap">
 		<div class="flex justify-center flex-col items-center">
 			<div class="brand-logo text-3xl text-center">
 				<a href="#">Tugas<span class="text-kuning">MU</span></a>
@@ -89,3 +95,5 @@
 	</form>
 </section>
 @endsection
+
+
